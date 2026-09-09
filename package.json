@@ -1,0 +1,26 @@
+{
+  "name": "antigravity-engine",
+  "version": "1.0.0",
+  "description": "Antigravity Engine - Professional Game Engine",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win"
+  },
+  "dependencies": {
+    "cannon-es": "^0.20.0",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.antigravity.engine",
+    "productName": "Antigravity Engine",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/app-icon.png"
+    }
+  }
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity Engine</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <div id="titlebar">
+      <div id="titlebar-title">
+        <span id="titlebar-logo">AG</span>
+        <span>Antigravity Engine</span>
+        <span style="color: var(--text-muted); font-size: 10px;">v1.0.0</span>
+      </div>
+      <div class="window-controls">
+        <button class="window-btn" id="window-minimize">─</button>
+        <button class="window-btn" id="window-maximize">☐</button>
+        <button class="window-btn close" id="window-close">✕</button>
+      </div>
+    </div>
+
+    <div id="menu-container">
+      <div id="menu-bar"></div>
+    </div>
+
+    <div id="toolbar">
+      <div class="toolbar-group">
+        <button class="toolbar-tool-btn active" data-tool="translate" title="Move (W)">✥</button>
+        <button class="toolbar-tool-btn" data-tool="rotate" title="Rotate (E)">⟳</button>
+        <button class="toolbar-tool-btn" data-tool="scale" title="Scale (R)">⤢</button>
+      </div>
+
+      <div class="toolbar-separator"></div>
+
+      <div class="toolbar-group">
+        <button class="toolbar-text-btn" id="toolbar-space" title="Toggle Space">Global</button>
+        <button class="toolbar-text-btn" id="toolbar-snap" title="Toggle Snap">Snap</button>
+      </div>
+
+      <div class="toolbar-play-group">
+        <button class="toolbar-play-btn" id="toolbar-play" title="Play">▶</button>
+        <button class="toolbar-play-btn" id="toolbar-pause" title="Pause">⏸</button>
+        <button class="toolbar-play-btn" id="toolbar-stop" title="Stop">⏹</button>
+      </div>
+
+      <div class="toolbar-group" style="margin-left: auto;">
+        <span style="font-size: 10px; color: var(--text-muted);" id="status-fps">0 FPS</span>
+      </div>
+    </div>
+
+    <div id="main-content">
+      <div id="left-panel">
+        <div class="panel-header">
+          <span class="panel-header-icon">📋</span>
+          Hierarchy
+        </div>
+        <div class="panel-content" id="hierarchy-content"></div>
+      </div>
+
+      <div id="center-panel">
+        <div id="viewport-area">
+          <div id="scene-viewport">
+            <canvas id="scene-canvas"></canvas>
+            <div class="viewport-label">Scene View</div>
+            <div class="viewport-stats">
+              <div id="status-tris">0 Tris</div>
+              <div id="status-drawcalls">0 Draw Calls</div>
+              <div id="status-objects">0 Objects</div>
+            </div>
+            <div class="viewport-view-buttons">
+              <button class="view-btn" onclick="editor.editorCamera.setView('perspective')">Persp</button>
+              <button class="view-btn" onclick="editor.editorCamera.setView('top')">Top</button>
+              <button class="view-btn" onclick="editor.editorCamera.setView('front')">Front</button>
+              <button class="view-btn" onclick="editor.editorCamera.setView('right')">Right</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="bottom-panel">
+          <div id="bottom-tabs">
+            <div class="panel-tabs">
+              <div class="panel-tab active" data-tab="console" onclick="switchBottomTab('console')">
+                <span>🖥️</span> Console
+                <span id="console-error-count" style="color: var(--accent-red); font-size: 10px;">0</span>
+                <span id="console-warn-count" style="color: var(--accent-yellow); font-size: 10px;">0</span>
+              </div>
+              <div class="panel-tab" data-tab="project" onclick="switchBottomTab('project')">
+                <span>📁</span> Project
+              </div>
+              <div class="panel-tab" data-tab="animation" onclick="switchBottomTab('animation')">
+                <span>🎬</span> Animation
+              </div>
+              <div style="flex:1"></div>
+              <div class="console-toolbar">
+                <button class="console-filter-btn active" data-filter="all">All</button>
+                <button class="console-filter-btn" data-filter="log">ℹ️ <span id="console-log-count">0</span></button>
+                <button class="console-filter-btn" data-filter="warn">⚠️</button>
+                <button class="console-filter-btn" data-filter="error">❌</button>
+                <button class="console-clear-btn" id="console-clear">Clear</button>
+              </div>
+            </div>
+            <div class="tab-content active" data-tab="console" id="console-tab">
+              <div class="panel-content" id="console-content"></div>
+            </div>
+            <div class="tab-content" data-tab="project" id="project-tab">
+              <div class="panel-content" id="project-content"></div>
+            </div>
+            <div class="tab-content" data-tab="animation" id="animation-tab">
+              <div style="padding: 20px; color: var(--text-muted); text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 8px;">🎬</div>
+                Select a GameObject with an Animator component
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="right-panel">
+        <div class="panel-header">
+          <span class="panel-header-icon">🔍</span>
+          Inspector
+        </div>
+        <div class="panel-content" id="inspector-content">
+          <div class="inspector-empty">No object selected</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="statusbar">
+      <div class="status-item">
+        <span class="status-dot"></span>
+        <span>Ready</span>
+      </div>
+      <div class="status-item">
+        <span>Antigravity Engine v1.0.0</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchBottomTab(tabName) {
+      document.querySelectorAll('.panel-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.tab === tabName);
+      });
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.toggle('active', content.dataset.tab === tabName);
+      });
+    }
+  </script>
+
+  <script src="../node_modules/three/build/three.min.js"></script>
+  <script>
+    if (typeof THREE === 'undefined') {
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r170/three.min.js';
+      document.head.appendChild(s);
+    }
+  </script>
+  <script src="../node_modules/cannon-es/dist/cannon-es.js"></script>
+  <script>
+    if (typeof CANNON === 'undefined') {
+      window.CANNON = window.CANNON || {};
+    }
+  </script>
+
+  <script src="utils/EventEmitter.js"></script>
+  <script src="utils/UUID.js"></script>
+  <script src="utils/MathUtils.js"></script>
+  <script src="utils/ColorUtils.js"></script>
+
+  <script src="engine/Time.js"></script>
+  <script src="engine/Component.js"></script>
+  <script src="engine/Transform.js"></script>
+  <script src="engine/Input.js"></script>
+  <script src="engine/components/MeshRenderer.js"></script>
+  <script src="engine/components/Camera.js"></script>
+  <script src="engine/components/Light.js"></script>
+  <script src="engine/components/Rigidbody.js"></script>
+  <script src="engine/components/AudioSource.js"></script>
+  <script src="engine/components/ParticleSystem.js"></script>
+  <script src="engine/components/Animator.js"></script>
+  <script src="engine/GameObject.js"></script>
+  <script src="engine/Scene.js"></script>
+  <script src="engine/Physics.js"></script>
+  <script src="engine/AssetManager.js"></script>
+  <script src="engine/PrefabManager.js"></script>
+  <script src="engine/ScriptEngine.js"></script>
+  <script src="engine/Engine.js"></script>
+
+  <script src="editor/Selection.js"></script>
+  <script src="editor/EditorCamera.js"></script>
+  <script src="editor/Gizmos.js"></script>
+  <script src="editor/Grid.js"></script>
+  <script src="editor/UndoRedo.js"></script>
+  <script src="editor/SceneSerializer.js"></script>
+  <script src="editor/panels/HierarchyPanel.js"></script>
+  <script src="editor/panels/InspectorPanel.js"></script>
+  <script src="editor/panels/ConsolePanel.js"></script>
+  <script src="editor/panels/ProjectPanel.js"></script>
+  <script src="editor/Editor.js"></script>
+
+  <script>
+    let editor;
+    window.addEventListener('DOMContentLoaded', () => {
+      editor = new Editor();
+      editor.init();
+      window.editor = editor;
+    });
+  </script>
+</body>
+</html>
