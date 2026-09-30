@@ -1,4 +1,4 @@
-class ProjectPanel {
+﻿class ProjectPanel {
   constructor(editor) {
     this.editor = editor;
     this.container = document.getElementById('project-content');
@@ -28,7 +28,7 @@ class ProjectPanel {
     if (!this.currentPath) {
       this.container.innerHTML = `
         <div class="project-empty">
-          <div class="project-empty-icon">📁</div>
+          <div class="project-empty-icon">ğŸ“</div>
           <div class="project-empty-text">No project folder opened</div>
           <button class="project-open-btn" id="project-open-inline">Open Folder</button>
         </div>
@@ -57,7 +57,7 @@ class ProjectPanel {
       if (i < parts.length - 1) {
         const sep = document.createElement('span');
         sep.className = 'project-separator';
-        sep.textContent = ' › ';
+        sep.textContent = ' â€º ';
         pathBar.appendChild(sep);
       }
     }
@@ -92,7 +92,7 @@ class ProjectPanel {
     const item = document.createElement('div');
     item.className = 'project-file-item';
 
-    const icon = isDir ? '📁' : this._getFileIcon(file.ext);
+    const icon = isDir ? 'ğŸ“' : this._getFileIcon(file.ext);
 
     item.innerHTML = `
       <div class="project-file-icon">${icon}</div>
@@ -120,28 +120,28 @@ class ProjectPanel {
 
   _getFileIcon(ext) {
     const iconMap = {
-      '.js': '📜',
-      '.json': '📋',
-      '.agscene': '🎬',
-      '.png': '🖼️',
-      '.jpg': '🖼️',
-      '.jpeg': '🖼️',
-      '.gif': '🖼️',
-      '.svg': '🖼️',
-      '.mp3': '🎵',
-      '.wav': '🎵',
-      '.ogg': '🎵',
-      '.mp4': '🎬',
-      '.glb': '🧊',
-      '.gltf': '🧊',
-      '.fbx': '🧊',
-      '.obj': '🧊',
-      '.txt': '📝',
-      '.md': '📝',
-      '.css': '🎨',
-      '.html': '🌐'
+      '.js': 'ğŸ“œ',
+      '.json': 'ğŸ“‹',
+      '.agscene': 'ğŸ¬',
+      '.png': 'ğŸ–¼ï¸',
+      '.jpg': 'ğŸ–¼ï¸',
+      '.jpeg': 'ğŸ–¼ï¸',
+      '.gif': 'ğŸ–¼ï¸',
+      '.svg': 'ğŸ–¼ï¸',
+      '.mp3': 'ğŸµ',
+      '.wav': 'ğŸµ',
+      '.ogg': 'ğŸµ',
+      '.mp4': 'ğŸ¬',
+      '.glb': 'ğŸ§Š',
+      '.gltf': 'ğŸ§Š',
+      '.fbx': 'ğŸ§Š',
+      '.obj': 'ğŸ§Š',
+      '.txt': 'ğŸ“',
+      '.md': 'ğŸ“',
+      '.css': 'ğŸ¨',
+      '.html': 'ğŸŒ'
     };
-    return iconMap[ext] || '📄';
+    return iconMap[ext] || 'ğŸ“„';
   }
 
   _openFile(file) {

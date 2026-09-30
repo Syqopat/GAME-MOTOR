@@ -1,4 +1,4 @@
-class Animator extends Component {
+﻿class Animator extends Component {
   constructor() {
     super('Animator');
     this._animations = {};

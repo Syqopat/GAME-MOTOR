@@ -1,4 +1,4 @@
-class UUID {
+﻿class UUID {
   static generate() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       const r = Math.random() * 16 | 0;

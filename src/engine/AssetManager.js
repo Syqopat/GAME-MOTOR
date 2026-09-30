@@ -1,4 +1,4 @@
-class AssetManager extends EventEmitter {
+﻿class AssetManager extends EventEmitter {
   constructor(engine) {
     super();
     this.engine = engine;

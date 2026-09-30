@@ -1,4 +1,4 @@
-class Gizmos extends EventEmitter {
+﻿class Gizmos extends EventEmitter {
   constructor(editor) {
     super();
     this.editor = editor;

@@ -1,4 +1,4 @@
-class Input {
+﻿class Input {
   constructor() {
     this._keys = {};
     this._keysDown = {};

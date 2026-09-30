@@ -1,4 +1,4 @@
-class ParticleSystemComponent extends Component {
+﻿class ParticleSystemComponent extends Component {
   constructor() {
     super('ParticleSystem');
     this._particles = null;

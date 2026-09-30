@@ -1,4 +1,4 @@
-class Editor extends EventEmitter {
+﻿class Editor extends EventEmitter {
   constructor() {
     super();
     this.engine = new Engine();
@@ -281,7 +281,7 @@ class Editor extends EventEmitter {
         if (!this.engine.isPlaying) {
           this.engine.play();
           playBtn.classList.add('active');
-          this.console.log('▶ Play mode started');
+          this.console.log('â–¶ Play mode started');
         }
       });
     }
@@ -303,7 +303,7 @@ class Editor extends EventEmitter {
           pauseBtn.classList.remove('active');
           this.hierarchyPanel.refresh();
           this.inspectorPanel.refresh();
-          this.console.log('⏹ Play mode stopped');
+          this.console.log('â¹ Play mode stopped');
         }
       });
     }
@@ -446,7 +446,7 @@ class Editor extends EventEmitter {
       <div class="modal-dialog">
         <div class="modal-header">
           <span>About Antigravity Engine</span>
-          <span class="modal-close">✕</span>
+          <span class="modal-close">âœ•</span>
         </div>
         <div class="modal-body">
           <h2 style="background: linear-gradient(135deg, #4a9eff, #ff6644); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; margin-bottom: 12px;">Antigravity Engine</h2>
@@ -454,9 +454,9 @@ class Editor extends EventEmitter {
           <p>Professional Game Engine</p>
           <br>
           <p>Powered by:</p>
-          <p>• Three.js r${THREE.REVISION}</p>
-          <p>• Electron</p>
-          <p>• Cannon-es Physics</p>
+          <p>â€¢ Three.js r${THREE.REVISION}</p>
+          <p>â€¢ Electron</p>
+          <p>â€¢ Cannon-es Physics</p>
         </div>
       </div>
     `;
@@ -472,7 +472,7 @@ class Editor extends EventEmitter {
       <div class="modal-dialog" style="width: 500px;">
         <div class="modal-header">
           <span>Keyboard Shortcuts</span>
-          <span class="modal-close">✕</span>
+          <span class="modal-close">âœ•</span>
         </div>
         <div class="modal-body">
           <table class="shortcuts-table">

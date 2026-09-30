@@ -1,4 +1,4 @@
-class Physics extends EventEmitter {
+﻿class Physics extends EventEmitter {
   constructor(engine) {
     super();
     this.engine = engine;

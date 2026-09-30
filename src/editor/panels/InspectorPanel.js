@@ -1,4 +1,4 @@
-class InspectorPanel {
+﻿class InspectorPanel {
   constructor(editor) {
     this.editor = editor;
     this.container = document.getElementById('inspector-content');
@@ -85,11 +85,11 @@ class InspectorPanel {
 
     const icon = this._getComponentIcon(comp.type);
     headerDiv.innerHTML = `
-      <span class="component-fold">▼</span>
+      <span class="component-fold">â–¼</span>
       <input type="checkbox" class="component-enable" ${comp.enabled ? 'checked' : ''}>
       <span class="component-icon">${icon}</span>
       <span class="component-name">${comp.type}</span>
-      ${comp.type !== 'Transform' ? '<span class="component-remove" title="Remove Component">✕</span>' : ''}
+      ${comp.type !== 'Transform' ? '<span class="component-remove" title="Remove Component">âœ•</span>' : ''}
     `;
 
     headerDiv.querySelector('.component-enable')?.addEventListener('change', (e) => {
@@ -109,7 +109,7 @@ class InspectorPanel {
 
     headerDiv.querySelector('.component-fold').addEventListener('click', () => {
       body.classList.toggle('collapsed');
-      headerDiv.querySelector('.component-fold').textContent = body.classList.contains('collapsed') ? '▶' : '▼';
+      headerDiv.querySelector('.component-fold').textContent = body.classList.contains('collapsed') ? 'â–¶' : 'â–¼';
     });
 
     const props = comp.getSerializableProperties();
@@ -484,19 +484,19 @@ class InspectorPanel {
 
   _getComponentIcon(type) {
     const icons = {
-      'Transform': '↔️',
-      'MeshFilter': '🔷',
-      'MeshRenderer': '🎨',
-      'Camera': '📷',
-      'Light': '💡',
-      'Rigidbody': '⚡',
-      'Collider': '🛡️',
-      'AudioSource': '🔊',
-      'AudioListener': '👂',
-      'ParticleSystem': '✨',
-      'Animator': '🎬'
+      'Transform': 'â†”ï¸',
+      'MeshFilter': 'ğŸ”·',
+      'MeshRenderer': 'ğŸ¨',
+      'Camera': 'ğŸ“·',
+      'Light': 'ğŸ’¡',
+      'Rigidbody': 'âš¡',
+      'Collider': 'ğŸ›¡ï¸',
+      'AudioSource': 'ğŸ”Š',
+      'AudioListener': 'ğŸ‘‚',
+      'ParticleSystem': 'âœ¨',
+      'Animator': 'ğŸ¬'
     };
-    return icons[type] || '📦';
+    return icons[type] || 'ğŸ“¦';
   }
 
   _formatLabel(key) {

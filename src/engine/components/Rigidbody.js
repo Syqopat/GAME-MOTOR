@@ -1,4 +1,4 @@
-class Rigidbody extends Component {
+﻿class Rigidbody extends Component {
   constructor() {
     super('Rigidbody');
     this.mass = 1;

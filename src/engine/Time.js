@@ -1,4 +1,4 @@
-class Time {
+﻿class Time {
   constructor() {
     this.deltaTime = 0;
     this.fixedDeltaTime = 1 / 60;

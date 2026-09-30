@@ -1,4 +1,4 @@
-class ConsolePanel {
+﻿class ConsolePanel {
   constructor(editor) {
     this.editor = editor;
     this.container = document.getElementById('console-content');
@@ -106,7 +106,7 @@ class ConsolePanel {
       const el = document.createElement('div');
       el.className = `console-message console-${msg.type}`;
 
-      const icon = msg.type === 'log' ? 'ℹ️' : msg.type === 'warn' ? '⚠️' : '❌';
+      const icon = msg.type === 'log' ? 'â„¹ï¸' : msg.type === 'warn' ? 'âš ï¸' : 'âŒ';
 
       el.innerHTML = `
         <span class="console-icon">${icon}</span>

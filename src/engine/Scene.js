@@ -1,4 +1,4 @@
-class Scene extends EventEmitter {
+﻿class Scene extends EventEmitter {
   constructor(name = 'Untitled Scene') {
     super();
     this.id = UUID.generate();

@@ -1,4 +1,4 @@
-class Grid {
+﻿class Grid {
   constructor() {
     this._gridHelper = null;
     this._axisHelper = null;

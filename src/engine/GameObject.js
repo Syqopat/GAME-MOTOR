@@ -1,4 +1,4 @@
-class GameObject extends EventEmitter {
+﻿class GameObject extends EventEmitter {
   constructor(name = 'GameObject') {
     super();
     this.id = UUID.generate();

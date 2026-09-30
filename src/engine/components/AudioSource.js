@@ -1,4 +1,4 @@
-class AudioSource extends Component {
+﻿class AudioSource extends Component {
   constructor() {
     super('AudioSource');
     this._audio = null;

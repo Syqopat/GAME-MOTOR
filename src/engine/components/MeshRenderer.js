@@ -1,4 +1,4 @@
-class MeshFilter extends Component {
+﻿class MeshFilter extends Component {
   constructor() {
     super('MeshFilter');
     this.geometry = null;

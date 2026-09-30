@@ -1,4 +1,4 @@
-class SceneSerializer {
+﻿class SceneSerializer {
   constructor(editor) {
     this.editor = editor;
   }

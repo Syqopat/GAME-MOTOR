@@ -1,4 +1,4 @@
-class EditorCamera {
+﻿class EditorCamera {
   constructor() {
     this.camera = new THREE.PerspectiveCamera(60, 16 / 9, 0.1, 10000);
     this.camera.position.set(8, 6, 8);

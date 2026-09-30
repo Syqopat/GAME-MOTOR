@@ -1,4 +1,4 @@
-class CameraComponent extends Component {
+﻿class CameraComponent extends Component {
   constructor() {
     super('Camera');
     this._camera = null;

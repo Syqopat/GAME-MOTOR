@@ -1,4 +1,4 @@
-class Engine extends EventEmitter {
+﻿class Engine extends EventEmitter {
   constructor() {
     super();
     this.time = new Time();

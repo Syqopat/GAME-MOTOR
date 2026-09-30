@@ -1,4 +1,4 @@
-class LightComponent extends Component {
+﻿class LightComponent extends Component {
   constructor() {
     super('Light');
     this._light = null;

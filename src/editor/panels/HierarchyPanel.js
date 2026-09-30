@@ -1,4 +1,4 @@
-class HierarchyPanel {
+﻿class HierarchyPanel {
   constructor(editor) {
     this.editor = editor;
     this.container = document.getElementById('hierarchy-content');
@@ -15,7 +15,7 @@ class HierarchyPanel {
 
     const sceneHeader = document.createElement('div');
     sceneHeader.className = 'hierarchy-scene-header';
-    sceneHeader.innerHTML = `<span class="hierarchy-icon">🎬</span>${scene.name}`;
+    sceneHeader.innerHTML = `<span class="hierarchy-icon">ğŸ¬</span>${scene.name}`;
     this.container.appendChild(sceneHeader);
 
     for (const go of scene.rootGameObjects) {
@@ -40,16 +40,16 @@ class HierarchyPanel {
     const indent = depth * 18;
     const hasChildren = gameObject.children.length > 0;
 
-    let icon = '📦';
-    if (gameObject.getComponent('Camera')) icon = '📷';
-    else if (gameObject.getComponent('Light')) icon = '💡';
-    else if (gameObject.getComponent('ParticleSystem')) icon = '✨';
-    else if (gameObject.getComponent('AudioSource')) icon = '🔊';
-    else if (gameObject.getComponent('MeshRenderer')) icon = '🧊';
+    let icon = 'ğŸ“¦';
+    if (gameObject.getComponent('Camera')) icon = 'ğŸ“·';
+    else if (gameObject.getComponent('Light')) icon = 'ğŸ’¡';
+    else if (gameObject.getComponent('ParticleSystem')) icon = 'âœ¨';
+    else if (gameObject.getComponent('AudioSource')) icon = 'ğŸ”Š';
+    else if (gameObject.getComponent('MeshRenderer')) icon = 'ğŸ§Š';
 
     item.innerHTML = `
       <div class="hierarchy-item-content" style="padding-left: ${indent + 8}px">
-        ${hasChildren ? '<span class="hierarchy-expand">▼</span>' : '<span class="hierarchy-expand-space"></span>'}
+        ${hasChildren ? '<span class="hierarchy-expand">â–¼</span>' : '<span class="hierarchy-expand-space"></span>'}
         <span class="hierarchy-icon">${icon}</span>
         <span class="hierarchy-name">${gameObject.name}</span>
       </div>

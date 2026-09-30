@@ -1,4 +1,4 @@
-class Component extends EventEmitter {
+﻿class Component extends EventEmitter {
   constructor(type) {
     super();
     this.id = UUID.generate();

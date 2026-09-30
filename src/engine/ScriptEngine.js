@@ -1,4 +1,4 @@
-class ScriptEngine extends EventEmitter {
+﻿class ScriptEngine extends EventEmitter {
   constructor(engine) {
     super();
     this.engine = engine;

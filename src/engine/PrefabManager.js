@@ -1,4 +1,4 @@
-class PrefabManager extends EventEmitter {
+﻿class PrefabManager extends EventEmitter {
   constructor(engine) {
     super();
     this.engine = engine;

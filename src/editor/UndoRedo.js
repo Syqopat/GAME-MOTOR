@@ -1,4 +1,4 @@
-class UndoRedo extends EventEmitter {
+﻿class UndoRedo extends EventEmitter {
   constructor() {
     super();
     this._undoStack = [];

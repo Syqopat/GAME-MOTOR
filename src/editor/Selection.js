@@ -1,4 +1,4 @@
-class Selection extends EventEmitter {
+﻿class Selection extends EventEmitter {
   constructor(editor) {
     super();
     this.editor = editor;

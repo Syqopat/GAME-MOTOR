@@ -1,4 +1,4 @@
-class Transform extends Component {
+﻿class Transform extends Component {
   constructor() {
     super('Transform');
     this._position = new THREE.Vector3(0, 0, 0);
